@@ -1,1200 +1,1737 @@
 <!DOCTYPE html>
+
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Untuk Artha Minata 💜</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Segoe UI", sans-serif;
-            background: #12001f;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* =========================
-           BACKGROUND
-        ========================== */
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-
-            background:
-                radial-gradient(circle at 20% 20%, #8e2de2 0%, transparent 25%),
-                radial-gradient(circle at 80% 30%, #4a00e0 0%, transparent 25%),
-                radial-gradient(circle at 50% 80%, #9c27b0 0%, transparent 25%),
-                linear-gradient(135deg, #10001c, #24003d, #11001d);
-
-            animation: backgroundMove 10s ease-in-out infinite alternate;
-        }
-
-        @keyframes backgroundMove {
-            from {
-                filter: hue-rotate(0deg);
-            }
-
-            to {
-                filter: hue-rotate(20deg);
-            }
-        }
-
-        /* =========================
-           FLOATING HEARTS
-        ========================== */
-
-        .hearts {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .heart {
-            position: absolute;
-            bottom: -50px;
-            color: #ff8de8;
-            font-size: 20px;
-            animation: floatHeart linear infinite;
-            opacity: 0.7;
-        }
-
-        @keyframes floatHeart {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: translateY(-110vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* =========================
-           MUSIC PLAYER
-        ========================== */
-
-        .music-player {
-            position: fixed;
-            top: 18px;
-            right: 18px;
-            z-index: 1000;
-
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(15px);
-
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50px;
-
-            padding: 8px 14px 8px 8px;
-
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-        }
-
-        .music-button {
-            width: 42px;
-            height: 42px;
-
-            border: none;
-            border-radius: 50%;
-
-            background: linear-gradient(135deg, #ff4ecd, #7b2ff7);
-            color: white;
-
-            font-size: 18px;
-            cursor: pointer;
-
-            box-shadow: 0 0 20px rgba(255,78,205,0.5);
-        }
-
-        .music-text {
-            font-size: 12px;
-            max-width: 150px;
-        }
-
-        .music-text b {
-            display: block;
-            font-size: 13px;
-        }
-
-        /* =========================
-           GENERAL
-        ========================== */
-
-        section {
-            position: relative;
-            z-index: 2;
-        }
-
-        .container {
-            width: min(1050px, 92%);
-            margin: auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #d8c5e8;
-            margin-bottom: 45px;
-        }
-
-        /* =========================
-           HERO
-        ========================== */
-
-        .hero {
-            min-height: 100vh;
 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .small-title {
-            color: #f7a7ff;
-            letter-spacing: 4px;
-            font-size: 13px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 11vw, 90px);
-            line-height: 1;
-
-            background: linear-gradient(
-                90deg,
-                #ffffff,
-                #f5a6ff,
-                #c77dff,
-                #ffffff
-            );
-
-            background-size: 300%;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            animation: gradientText 5s infinite;
-        }
-
-        @keyframes gradientText {
-            0% {
-                background-position: 0%;
-            }
-
-            50% {
-                background-position: 100%;
-            }
-
-            100% {
-                background-position: 0%;
-            }
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin-top: 25px;
-
-            color: #eadcf5;
-            font-size: 17px;
-            line-height: 1.8;
-        }
+<meta charset="UTF-8">
 
-        .scroll-button {
-            margin-top: 40px;
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            padding: 14px 25px;
-            border-radius: 30px;
+<title>For You 💗</title>
 
-            color: white;
-            text-decoration: none;
-
-            background: linear-gradient(135deg, #a855f7, #ec4899);
-
-            box-shadow: 0 10px 30px rgba(168,85,247,0.35);
-
-            transition: 0.3s;
-        }
-
-        .scroll-button:hover {
-            transform: translateY(-4px);
-        }
-
-        /* =========================
-           LOVE LETTER
-        ========================== */
-
-        .letter-section {
-            padding: 100px 0;
-        }
-
-        .letter {
-            max-width: 750px;
-            margin: auto;
-
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(18px);
-
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 25px;
-
-            padding: 40px;
-
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.25),
-                inset 0 0 30px rgba(255,255,255,0.03);
-        }
-
-        .letter h3 {
-            color: #ff9ce9;
-            margin-bottom: 20px;
-        }
-
-        .letter p {
-            color: #eee0f6;
-            line-height: 2;
-            font-size: 16px;
-            margin-bottom: 18px;
-        }
-
-        .signature {
-            text-align: right;
-            color: #f5a6ff;
-            font-style: italic;
-            margin-top: 25px;
-        }
-
-        /* =========================
-           SPECIAL MESSAGE
-        ========================== */
-
-        .special-section {
-            padding: 80px 0 100px;
-        }
-
-        .special-card {
-            max-width: 800px;
-            margin: auto;
-
-            padding: 45px;
-
-            border-radius: 30px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(168,85,247,0.18),
-                    rgba(236,72,153,0.12)
-                );
+<style>
 
-            border: 1px solid rgba(255,255,255,0.15);
-
-            backdrop-filter: blur(18px);
-
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.25),
-                0 0 50px rgba(168,85,247,0.08);
-
-            text-align: center;
-        }
-
-        .special-icon {
-            font-size: 55px;
-            margin-bottom: 20px;
-
-            animation: heartbeat 1.5s infinite;
-        }
-
-        .special-card h2 {
-            font-size: 32px;
-            color: #ffabe9;
-            margin-bottom: 25px;
-        }
-
-        .special-card p {
-            color: #e8d9f0;
-            line-height: 2;
-            font-size: 16px;
-            margin-bottom: 16px;
-        }
-
-        .special-highlight {
-            color: #ff9ce9;
-            font-weight: bold;
-        }
+/* =========================
 
-        /* =========================
-           PHOTO GALLERY
-        ========================== */
+   DASAR WEBSITE
 
-        .gallery-section {
-            padding: 100px 0;
-        }
+========================= */
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .photo {
-            height: 330px;
-            overflow: hidden;
-            border-radius: 22px;
-
-            border: 1px solid rgba(255,255,255,0.15);
+* {
 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-        }
+    margin: 0;
 
-        .photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+    padding: 0;
 
-            transition: 0.5s;
-        }
-
-        .photo:hover img {
-            transform: scale(1.08);
-        }
+    box-sizing: border-box;
 
-        /* =========================
-           REASONS
-        ========================== */
+    font-family: Arial, sans-serif;
 
-        .reasons-section {
-            padding: 100px 0;
-        }
+}
 
-        .reasons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+html,
 
-        .reason {
-            padding: 30px;
+body {
 
-            border-radius: 22px;
+    width: 100%;
 
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.12);
+    height: 100%;
 
-            text-align: center;
+    overflow: hidden;
 
-            transition: 0.3s;
-        }
+}
 
-        .reason:hover {
-            transform: translateY(-8px);
-            background: rgba(255,255,255,0.11);
-        }
+body {
 
-        .reason .icon {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
+    background: linear-gradient(
 
-        .reason h3 {
-            margin-bottom: 10px;
-            color: #ffabe9;
-        }
+        135deg,
 
-        .reason p {
-            color: #d9cae4;
-            line-height: 1.7;
-        }
+        #ffd6e7,
 
-        /* =========================
-           FINAL
-        ========================== */
+        #fff0f6,
 
-        .final-section {
-            min-height: 80vh;
+        #eadcff
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    );
 
-            text-align: center;
+}
 
-            padding: 80px 20px;
-        }
+/* =========================
 
-        .final-content {
-            max-width: 750px;
-        }
+   SISTEM SLIDE
 
-        .big-heart {
-            font-size: 80px;
+========================= */
 
-            animation: heartbeat 1.4s infinite;
-        }
+.slide {
 
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
+    position: fixed;
 
-            50% {
-                transform: scale(1.2);
-            }
-        }
+    top: 0;
 
-        .final-content h2 {
-            font-size: clamp(35px, 8vw, 65px);
-            margin: 20px 0;
+    left: 100%;
 
-            color: #ffb2ed;
-        }
+    width: 100%;
 
-        .final-content p {
-            color: #e1d3eb;
-            line-height: 1.9;
-            font-size: 17px;
-        }
+    height: 100dvh;
 
-        .love-button {
-            margin-top: 30px;
+    display: flex;
 
-            border: none;
+    justify-content: center;
 
-            padding: 16px 28px;
+    align-items: center;
 
-            border-radius: 50px;
+    padding: 20px;
 
-            color: white;
+    opacity: 0;
 
-            font-size: 16px;
-            font-weight: bold;
+    transition:
 
-            cursor: pointer;
+        left 0.6s ease,
 
-            background: linear-gradient(
-                135deg,
-                #ff4ecd,
-                #7b2ff7
-            );
+        opacity 0.5s ease;
 
-            box-shadow:
-                0 10px 35px rgba(236,72,153,0.4);
+}
 
-            transition: 0.3s;
-        }
+.slide.active {
 
-        .love-button:hover {
-            transform: scale(1.05);
-        }
+    left: 0;
 
-        /* =========================
-           POPUP
-        ========================== */
+    opacity: 1;
 
-        .popup {
-            position: fixed;
-            inset: 0;
+}
 
-            background: rgba(8,0,15,0.75);
-            backdrop-filter: blur(8px);
+.slide.keluar {
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    left: -100%;
 
-            padding: 20px;
+    opacity: 0;
 
-            opacity: 0;
-            visibility: hidden;
+}
 
-            transition: 0.3s;
+/* =========================
 
-            z-index: 2000;
-        }
+   CARD
 
-        .popup.active {
-            opacity: 1;
-            visibility: visible;
-        }
+========================= */
 
-        .popup-box {
-            max-width: 500px;
+.card {
 
-            background: linear-gradient(
-                135deg,
-                #2b0646,
-                #160021
-            );
+    width: 100%;
 
-            border: 1px solid rgba(255,255,255,0.15);
+    max-width: 430px;
 
-            border-radius: 25px;
+    padding: 28px 24px;
 
-            padding: 40px;
+    background: rgba(255,255,255,0.94);
 
-            text-align: center;
+    border-radius: 30px;
 
-            box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+    text-align: center;
 
-            transform: scale(0.8);
+    box-shadow:
 
-            transition: 0.3s;
-        }
+        0 15px 45px
 
-        .popup.active .popup-box {
-            transform: scale(1);
-        }
+        rgba(130,60,100,0.15);
 
-        .popup-box h2 {
-            color: #ff9de8;
-            margin-bottom: 15px;
-        }
+}
 
-        .popup-box p {
-            color: #e5d7ec;
-            line-height: 1.8;
-        }
+/* =========================
 
-        .close-popup {
-            margin-top: 25px;
+   JUDUL
 
-            padding: 10px 22px;
+========================= */
 
-            border: none;
-            border-radius: 30px;
+h1 {
 
-            color: white;
-            background: #8b35d9;
+    color: #d94f87;
 
-            cursor: pointer;
-        }
+    font-size: 27px;
 
-        /* =========================
-           FOOTER
-        ========================== */
+    margin-bottom: 10px;
 
-        footer {
-            text-align: center;
-            padding: 30px 20px;
+}
 
-            color: #a995b5;
-            font-size: 13px;
-        }
+.subtitle {
 
-        /* =========================
-           MOBILE
-        ========================== */
+    color: #777;
 
-        @media (max-width: 700px) {
+    font-size: 14px;
 
-            .music-player {
-                top: 10px;
-                right: 10px;
-            }
+    line-height: 1.6;
 
-            .music-text {
-                display: none;
-            }
+    margin-bottom: 20px;
 
-            .hero {
-                min-height: 100svh;
-                padding-top: 70px;
-            }
+}
 
-            .hero h1 {
-                font-size: 50px;
-            }
+/* =========================
 
-            .hero p {
-                font-size: 15px;
-            }
+   LOVE
 
-            .section-title {
-                font-size: 29px;
-            }
+========================= */
 
-            .letter {
-                padding: 25px;
-            }
+.heart {
 
-            .letter p {
-                font-size: 15px;
-                line-height: 1.8;
-            }
+    font-size: 45px;
 
-            .special-card {
-                padding: 28px 22px;
-            }
+    margin-bottom: 8px;
 
-            .special-card h2 {
-                font-size: 27px;
-            }
+    animation: heartbeat 1.5s infinite;
 
-            .special-card p {
-                font-size: 15px;
-                line-height: 1.8;
-            }
+}
 
-            .gallery {
-                grid-template-columns: 1fr;
-            }
+@keyframes heartbeat {
 
-            .photo {
-                height: 380px;
-            }
+    0%,
 
-            .reasons {
-                grid-template-columns: 1fr;
-            }
+    100% {
 
-            .final-section {
-                min-height: 70vh;
-            }
+        transform: scale(1);
 
-            .big-heart {
-                font-size: 65px;
-            }
-        }
-    </style>
+    }
+
+    50% {
+
+        transform: scale(1.15);
+
+    }
+
+}
+
+/* =========================
+
+   HALAMAN PIN
+
+========================= */
+
+.lock {
+
+    font-size: 50px;
+
+    margin-bottom: 12px;
+
+}
+
+/* BULATAN PIN */
+
+.pin-display {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 22px 0;
+
+}
+
+.pin-dot {
+
+    width: 15px;
+
+    height: 15px;
+
+    border-radius: 50%;
+
+    border: 2px solid #e65b91;
+
+    transition: 0.2s;
+
+}
+
+.pin-dot.isi {
+
+    background: #e65b91;
+
+    transform: scale(1.15);
+
+}
+
+/* =========================
+
+   KEYPAD PIN
+
+========================= */
+
+.keypad {
+
+    width: 240px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+}
+
+.key {
+
+    width: 62px;
+
+    height: 62px;
+
+    margin: auto;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #fff0f6;
+
+    color: #d94f87;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.15s;
+
+}
+
+.key:active {
+
+    transform: scale(0.88);
+
+    background: #ffd4e5;
+
+}
+
+.delete {
+
+    font-size: 18px;
+
+}
+
+/* =========================
+
+   PESAN PIN
+
+========================= */
+
+#pesanPin {
+
+    height: 22px;
+
+    margin-top: 15px;
+
+    font-size: 14px;
+
+    color: #e34b65;
+
+}
+
+/* =========================
+
+   ANIMASI PIN SALAH
+
+========================= */
+
+.shake {
+
+    animation: shake 0.35s;
+
+}
+
+@keyframes shake {
+
+    0% {
+
+        transform: translateX(0);
+
+    }
+
+    25% {
+
+        transform: translateX(-10px);
+
+    }
+
+    50% {
+
+        transform: translateX(10px);
+
+    }
+
+    75% {
+
+        transform: translateX(-10px);
+
+    }
+
+    100% {
+
+        transform: translateX(0);
+
+    }
+
+}
+
+/* =========================
+
+   RATING
+
+========================= */
+
+.rating-box {
+
+    text-align: left;
+
+    margin-top: 23px;
+
+}
+
+.rating-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    color: #555;
+
+    font-weight: bold;
+
+}
+
+.percent {
+
+    background: #ffe1ed;
+
+    color: #d94f87;
+
+    padding: 5px 11px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+}
+
+/* =========================
+
+   SLIDER
+
+========================= */
+
+input[type="range"] {
+
+    width: 100%;
+
+    height: 8px;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    background: #f3dce6;
+
+    border-radius: 20px;
+
+    outline: none;
+
+}
+
+input[type="range"]::-webkit-slider-thumb {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    width: 25px;
+
+    height: 25px;
+
+    border-radius: 50%;
+
+    background: #e65b91;
+
+    border: 4px solid white;
+
+    box-shadow:
+
+        0 2px 8px
+
+        rgba(0,0,0,0.2);
+
+    cursor: pointer;
+
+}
+
+input[type="range"]::-moz-range-thumb {
+
+    width: 20px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #e65b91;
+
+    border: 4px solid white;
+
+    cursor: pointer;
+
+}
+
+/* =========================
+
+   TOMBOL
+
+========================= */
+
+.next-button {
+
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+
+        135deg,
+
+        #e85d95,
+
+        #c967b5
+
+    );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 7px 20px
+
+        rgba(220,80,140,0.20);
+
+    transition: 0.2s;
+
+}
+
+.next-button:active {
+
+    transform: scale(0.97);
+
+}
+
+/* =========================
+
+   PESAN KHUSUS
+
+========================= */
+
+.pesan-card {
+
+    max-width: 450px;
+
+    padding: 25px 23px;
+
+}
+
+.pesan-text {
+
+    text-align: left;
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+}
+
+.pesan-text p {
+
+    margin-bottom: 13px;
+
+}
+
+.love-text {
+
+    text-align: center;
+
+    color: #d94f87;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-top: 15px;
+
+}
+
+/* =========================
+
+   HALAMAN SELESAI
+
+========================= */
+
+.finish-heart {
+
+    font-size: 75px;
+
+    margin-bottom: 20px;
+
+    animation:
+
+        heartbeat 1.2s infinite;
+
+}
+
+.finish-title {
+
+    color: #d94f87;
+
+    font-size: 26px;
+
+    line-height: 1.5;
+
+    margin-bottom: 15px;
+
+}
+
+.finish-small {
+
+    color: #888;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+/* =========================
+
+   FOOTER
+
+========================= */
+
+.footer {
+
+    margin-top: 20px;
+
+    color: #aaa;
+
+    font-size: 11px;
+
+}
+
+/* =========================
+
+   RESPONSIVE HP
+
+========================= */
+
+@media (max-height: 750px) {
+
+    .card {
+
+        padding: 19px;
+
+    }
+
+    .lock {
+
+        font-size: 38px;
+
+        margin-bottom: 5px;
+
+    }
+
+    h1 {
+
+        font-size: 22px;
+
+    }
+
+    .subtitle {
+
+        font-size: 12px;
+
+        margin-bottom: 10px;
+
+    }
+
+    .pin-display {
+
+        margin: 14px 0;
+
+    }
+
+    .key {
+
+        width: 52px;
+
+        height: 52px;
+
+    }
+
+    .rating-box {
+
+        margin-top: 17px;
+
+    }
+
+    /* PESAN */
+
+    .pesan-card {
+
+        padding: 16px 18px;
+
+    }
+
+    .pesan-card .heart {
+
+        font-size: 27px;
+
+        margin-bottom: 3px;
+
+    }
+
+    .pesan-card h1 {
+
+        margin-bottom: 7px;
+
+    }
+
+    .pesan-text {
+
+        font-size: 11.5px;
+
+        line-height: 1.35;
+
+    }
+
+    .pesan-text p {
+
+        margin-bottom: 7px;
+
+    }
+
+    .love-text {
+
+        font-size: 14px;
+
+        margin-top: 7px;
+
+    }
+
+    .pesan-card .next-button {
+
+        margin-top: 10px;
+
+        padding: 10px;
+
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-    <!-- =========================
-         MUSIC PLAYER
-    ========================== -->
+<!-- =====================================================
 
-    <div class="music-player">
+     SLIDE 1
 
-        <button class="music-button" id="musicButton">
-            ▶
+     PIN
+
+===================================================== -->
+
+<section
+
+    class="slide active"
+
+    id="slidePin"
+
+>
+
+<div
+
+    class="card"
+
+    id="pinCard"
+
+>
+
+    <div class="lock">
+
+        🔐
+
+    </div>
+
+    <h1>
+
+        Hii, kamu! 💗
+
+    </h1>
+
+    <p class="subtitle">
+
+        Sebelum masuk, masukin PIN-nya dulu yaa.
+
+        <br>
+
+        Harusnya kamu tau kok 👀
+
+    </p>
+
+    <!-- BULATAN PIN -->
+
+    <div class="pin-display">
+
+        <div class="pin-dot"></div>
+
+        <div class="pin-dot"></div>
+
+        <div class="pin-dot"></div>
+
+        <div class="pin-dot"></div>
+
+        <div class="pin-dot"></div>
+
+        <div class="pin-dot"></div>
+
+    </div>
+
+    <!-- KEYPAD -->
+
+    <div class="keypad">
+
+        <button
+
+            class="key"
+
+            onclick="tekanPin('1')"
+
+        >
+
+            1
+
         </button>
 
-        <div class="music-text">
-            <b>Sampai Jadi Debu</b>
-            <span>Untuk Artha 💜</span>
-        </div>
+        <button
+
+            class="key"
+
+            onclick="tekanPin('2')"
+
+        >
+
+            2
+
+        </button>
+
+        <button
+
+            class="key"
+
+            onclick="tekanPin('3')"
+
+        >
+
+            3
+
+        </button>
+
+        <button
+
+            class="key"
+
+            onclick="tekanPin('4')"
+
+        >
+
+            4
+
+        </button>
+
+        <button
+
+            class="key"
+
+            onclick="tekanPin('5')"
+
+        >
+
+            5
+
+        </button>
+
+        <button
+
+            class="key"
+
+            onclick="tekanPin('6')"
+
+        >
+
+            6
+
+        </button>
+
+        <button
+
+            class="key"
+
+            onclick="tekanPin('7')"
+
+        >
+
+            7
+
+        </button>
+
+        <button
+
+            class="key"
+
+            onclick="tekanPin('8')"
+
+        >
+
+            8
+
+        </button>
+
+        <button
+
+            class="key"
+
+            onclick="tekanPin('9')"
+
+        >
+
+            9
+
+        </button>
+
+        <div></div>
+
+        <button
+
+            class="key"
+
+            onclick="tekanPin('0')"
+
+        >
+
+            0
+
+        </button>
+
+        <button
+
+            class="key delete"
+
+            onclick="hapusPin()"
+
+        >
+
+            ⌫
+
+        </button>
 
     </div>
 
+    <div id="pesanPin"></div>
 
-    <!-- =========================
-         FLOATING HEARTS
-    ========================== -->
+    <div class="footer">
 
-    <div class="hearts" id="hearts"></div>
+        Only for you 💗
 
+    </div>
 
-    <!-- =========================
-         HERO
-    ========================== -->
+</div>
 
-    <section class="hero">
+</section>
 
-        <div class="small-title">
-            Sebuah website kecil untuk...
+<!-- =====================================================
+
+     SLIDE 2
+
+     RATING
+
+===================================================== -->
+
+<section
+
+    class="slide"
+
+    id="slideRating"
+
+>
+
+<div class="card">
+
+    <div class="heart">
+
+        💗
+
+    </div>
+
+    <h1>
+
+        How Was Your Day?
+
+    </h1>
+
+    <p class="subtitle">
+
+        Kasih nilai kegiatan kamu selama 3 hari ini yaa 🥺
+
+        <br>
+
+        Geser sesuai yang kamu rasain!
+
+    </p>
+
+    <!-- SERU -->
+
+    <div class="rating-box">
+
+        <div class="rating-title">
+
+            <span>
+
+                🎉 Seru
+
+            </span>
+
+            <span
+
+                class="percent"
+
+                id="seruValue"
+
+            >
+
+                50%
+
+            </span>
+
         </div>
 
-        <h1>
-            Artha Minata 💜
-        </h1>
+        <input
+
+            type="range"
+
+            id="seru"
+
+            min="0"
+
+            max="100"
+
+            value="50"
+
+            oninput="updateValue('seru')"
+
+        >
+
+    </div>
+
+    <!-- CAPEK -->
+
+    <div class="rating-box">
+
+        <div class="rating-title">
+
+            <span>
+
+                😮‍💨 Capek
+
+            </span>
+
+            <span
+
+                class="percent"
+
+                id="capekValue"
+
+            >
+
+                50%
+
+            </span>
+
+        </div>
+
+        <input
+
+            type="range"
+
+            id="capek"
+
+            min="0"
+
+            max="100"
+
+            value="50"
+
+            oninput="updateValue('capek')"
+
+        >
+
+    </div>
+
+    <!-- MOOD -->
+
+    <div class="rating-box">
+
+        <div class="rating-title">
+
+            <span>
+
+                😊 Mood
+
+            </span>
+
+            <span
+
+                class="percent"
+
+                id="moodValue"
+
+            >
+
+                50%
+
+            </span>
+
+        </div>
+
+        <input
+
+            type="range"
+
+            id="mood"
+
+            min="0"
+
+            max="100"
+
+            value="50"
+
+            oninput="updateValue('mood')"
+
+        >
+
+    </div>
+
+    <button
+
+        class="next-button"
+
+        onclick="bukaPesan()"
+
+    >
+
+        Kirim Penilaian 💗
+
+    </button>
+
+    <div class="footer">
+
+        Made with 💗 just for you
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+
+     SLIDE 3
+
+     PESAN KHUSUS
+
+===================================================== -->
+
+<section
+
+    class="slide"
+
+    id="slidePesan"
+
+>
+
+<div class="card pesan-card">
+
+    <div class="heart">
+
+        💌
+
+    </div>
+
+    <h1>
+
+        For You
+
+    </h1>
+
+    <div class="pesan-text">
 
         <p>
-            Kamu mungkin cuma pergi kegiatan selama 3 hari...
-            tapi ternyata 3 hari tanpa kamu cukup membuat aku
-            kepikiran kamu terus.
+
+            haloo sayangg, pasti kegiatan selama 3 hari ini ada
+
+            rasa cape seru nyaaa yaa, sebelumnya makasih ya
+
+            sayang udah mau isi survei di website ini, secara
+
+            ga langsung menghargai buatan website aku hehehe.
+
         </p>
 
-        <a href="#letter" class="scroll-button">
-            Buka pesan dari aku 💌
-        </a>
+        <p>
 
-    </section>
+            akuu buatt website ini 2 hari setengah, dari jumat
 
+            sore sampe minggu pagi dan ini websitee pertamaa
 
-    <!-- =========================
-         LOVE LETTER
-    ========================== -->
+            yang aku buatt hehehe.
 
-    <section class="letter-section" id="letter">
+        </p>
 
-        <div class="container">
+        <p>
 
-            <h2 class="section-title">
-                Haii SAYANGG 💌
-            </h2>
+            semangat terus buat menghadapi kegiatan kedepannya
 
-            <p class="section-subtitle">
-                Ada sesuatu yang mau aku kasih ke kamu...
-            </p>
+            ya sayang, semoga kegiatan kemaren bisa membawa
 
-            <div class="letter">
+            kamu kepribadian yang lebih tangguh, berani,
 
-                <h3>
-                    Buat kamu yang lagi kegiatan ❤️
-                </h3>
+            intinya membawa kepribadian yang baik untuk kamu.
 
-                <p>
-                    aku sebenarnya gatau jir harus mulai dari mana.
-                    tapi aku cuma pengen bilang kalo selama kamu
-                    pergi kegiatan, aku kangen banget sama kamu.
-                </p>
+        </p>
 
-                <p>
-                    mungkin buat kamu tiga hari itu cuma sebentar.
-                    hmm tapi buat aku, itu lumayan lama karena
-                    biasanya ada kamu, terus tiba-tiba kamu pergi
-                    kegiatan dan aku cuma bisa nunggu kamu pulang.
-                </p>
+        <p>
 
-                <p>
-                    jadii daripada aku cuma bilang "aku kangen"
-                    , akhirnya aku kepikiran buat
-                    bikin sesuatu buat kamu.
-                </p>
+            akuu selalu support kamu apapun yang kamu lakukan
 
-                <p>
-                    dann yappp jadii dehh website kecil ini.
-                    cihuyyyy. 
-                </p>
+            asal tau batasan di hubungan kita ya sayang, akuu
 
-                <div class="signature">
-                    dari your pacar 💜
-                </div>
+            tungguu ceritaa kamu di wa yaa sayangg.
 
-            </div>
+        </p>
 
-        </div>
+        <div class="love-text">
 
-    </section>
-
-
-    <!-- =========================
-         SPECIAL MESSAGE
-    ========================== -->
-
-    <section class="special-section">
-
-        <div class="container">
-
-            <div class="special-card">
-
-                <div class="special-icon">
-                    💜
-                </div>
-
-                <h2>
-                    Kamu tau nggak?
-                </h2>
-
-                <p>
-                    <span class="special-highlight">
-                        coyy aku buat ini selama 2 harii tauu...
-                    </span>
-                </p>
-
-                <p>
-                    selama kamu kegiatan, aku malah sibuk bikin
-                    website ini buat kamu.
-                </p>
-
-                <p>
-                    jadi selama kamu kegiatan selama
-                    3 hari itu, di sini aku yang die diem
-                    mikirin kamu sambil ngurusin website ini.
-                    cihuyyy.
-                </p>
-
-                <p>
-                    akuu pengen pas kamu pulang nanti,
-                    kamu punya sesuatu yang bisa kamu lihat
-                    dan kamu tauu kalo selama kamu pergi,
-                    ada akuu yang kangen banget sama kamu.
-                </p>
-
-                <p>
-                    mungkin website ini sederhana.
-                    tapi setiap bagian di sini aku buat sambil
-                    mikirin kamu sayanggggg.
-                </p>
-
-                <p>
-                    jadii jangan bilang aku  kagaa ngapa ngapain yek
-                    selama kamu pergi. 😭💜
-                </p>
-
-                <div class="signature">
-                    2 hari aku buat ini khusus buat kamu.<br>
-                    <strong>my pacar guehh 💜</strong>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         GALLERY
-    ========================== -->
-
-    <section class="gallery-section">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                nihh liatt akuu buatt 📸
-            </h2>
-
-            <p class="section-subtitle">
-                dokumentasinya bosh
-            </p>
-
-            <div class="gallery">
-
-                <div class="photo">
-                    <img src="images/foto1.jpg" alt="1">
-                </div>
-
-                <div class="photo">
-                    <img src="images/foto2.jpg" alt="2">
-                </div>
-
-                <div class="photo">
-                    <img src="images/foto3.jpg" alt="3">
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         REASONS
-    ========================== -->
-
-    <section class="reasons-section">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                kenapa aku buat web ini untuk Kamu? 💕
-            </h2>
-
-            <p class="section-subtitle">
-                
-                karena aku mau kamu jadi orang pertama yg rasain hasil project akuu
-            </p>
-
-            <div class="reasons">
-
-                <div class="reason">
-
-                    <div class="icon">
-                        😊
-                    </div>
-
-                    <h3>
-                        AKU TUNGGU CERITA
-                    </h3>
-
-                    <p>
-                        patsi ada keluh kesahnya.
-                    </p>
-
-                </div>
-
-
-                <div class="reason">
-
-                    <div class="icon">
-                        🫶
-                    </div>
-
-                    <h3>
-                        SELAMA KAMU
-                    </h3>
-
-                    <p>
-                        pasti ada seneng dan sedihnya.
-                    </p>
-
-                </div>
-
-
-                <div class="reason">
-
-                    <div class="icon">
-                        💜
-                    </div>
-
-                    <h3>
-                        KEGIATAN 3 HARI YA
-                    </h3>
-
-                    <p>
-                        ceritaan semuanya ke akuu ya sayangg.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         FINAL MESSAGE
-    ========================== -->
-
-    <section class="final-section">
-
-        <div class="final-content">
-
-            <div class="big-heart">
-                💜
-            </div>
-
-            <h2>
-                 buat my pacarr
-            </h2>
-
-            <p>
-                kaloo nantii kamu udah pulang dan sampe kostt..
-            </p>
-
-            <p style="margin-top:15px;">
-                aku cuma mau bilang:
-            </p>
-
-            <p style="
-                margin-top:20px;
-                color:#ffabe9;
-                font-size:22px;
-                font-weight:bold;
-            ">
-                "AKU KANGEN KAMU."
-            </p>
-
-            <p style="margin-top:20px;">
-                makasihh yaa udahh mauu bacaa web ini ya sayanggggg
-            </p>
-
-            <button class="love-button" onclick="showLove()">
-                KLIKK DISINII SENGG 💕
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         POPUP
-    ========================== -->
-
-    <div class="popup" id="popup">
-
-        <div class="popup-box">
-
-            <h2>
-                AKU SAYANG KAMU! 💜
-            </h2>
-
-            <p>
-                kalo kamu udah sampai sini berarti
-                kamu sudah lihat semua yang aku buat.
-            </p>
-
-            <p style="margin-top:15px;">
-                semoga setelah kegiatan kamu selesai,
-                kamu tau kalo ada aku yang selalu
-                nungguin kamu pulang. ❤️
-            </p>
-
-            <p style="margin-top:15px;">
-                jangan lupa istirahat yaa sayang.
-                aku sayang kamu. 💜
-            </p>
-
-            <button class="close-popup" onclick="closeLove()">
-                Tutup 💕
-            </button>
+            loveee u moreee 💗
 
         </div>
 
     </div>
 
+    <button
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+        class="next-button"
 
-    <footer>
-        Dibuat selama 2 hari, khusus untuk my pacarr . 💜
-    </footer>
+        onclick="bukaSelesai()"
 
+    >
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+        Selesai 💗
 
-    <script>
+    </button>
 
-        /* =========================
-           MUSIC
-        ========================== */
+</div>
 
-        const music = document.getElementById("music");
-        const musicButton = document.getElementById("musicButton");
+</section>
 
-        let playing = false;
+<!-- =====================================================
 
-        musicButton.addEventListener("click", () => {
+     SLIDE 4
 
-            if (playing) {
+     SELESAI
 
-                music.pause();
+===================================================== -->
 
-                musicButton.textContent = "▶";
+<section
 
-                playing = false;
+    class="slide"
 
-            } else {
+    id="slideSelesai"
 
-                music.play();
+>
 
-                musicButton.textContent = "❚❚";
+<div class="card">
 
-                playing = true;
+    <div class="finish-heart">
+
+        💗
+
+    </div>
+
+    <h1 class="finish-title">
+
+        AKUU TUNGGUU YAA SAYANG
+
+        <br>
+
+        CERITAANYAAA
+
+    </h1>
+
+    <p class="finish-small">
+
+        jangan lupa ceritain semuanya ke akuu yaaa 🥺💗
+
+        <br><br>
+
+        loveee u moreee
+
+    </p>
+
+    <div class="footer">
+
+        Made especially for you 💗
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+
+     JAVASCRIPT
+
+===================================================== -->
+
+<script>
+
+/* ================================
+
+   PIN YANG BENAR
+
+================================ */
+
+const pinBenar = "050208";
+
+let pinSekarang = "";
+
+/* ================================
+
+   TEKAN ANGKA
+
+================================ */
+
+function tekanPin(angka) {
+
+    if (
+
+        pinSekarang.length >= 6
+
+    ) {
+
+        return;
+
+    }
+
+    pinSekarang += angka;
+
+    updatePinDisplay();
+
+    /* OTOMATIS CEK SETELAH 6 DIGIT */
+
+    if (
+
+        pinSekarang.length === 6
+
+    ) {
+
+        setTimeout(
+
+            function() {
+
+                cekPin();
+
+            },
+
+            250
+
+        );
+
+    }
+
+}
+
+/* ================================
+
+   HAPUS PIN
+
+================================ */
+
+function hapusPin() {
+
+    pinSekarang =
+
+        pinSekarang.slice(
+
+            0,
+
+            -1
+
+        );
+
+    document.getElementById(
+
+        "pesanPin"
+
+    ).innerText = "";
+
+    updatePinDisplay();
+
+}
+
+/* ================================
+
+   BULATAN PIN
+
+================================ */
+
+function updatePinDisplay() {
+
+    const dots =
+
+        document.querySelectorAll(
+
+            ".pin-dot"
+
+        );
+
+    dots.forEach(
+
+        function(dot, index) {
+
+            if (
+
+                index <
+
+                pinSekarang.length
+
+            ) {
+
+                dot.classList.add(
+
+                    "isi"
+
+                );
 
             }
 
-        });
+            else {
 
+                dot.classList.remove(
 
-        /* =========================
-           FLOATING HEARTS
-        ========================== */
+                    "isi"
 
-        const hearts = document.getElementById("hearts");
+                );
 
-        const heartSymbols = [
-            "💜",
-            "💕",
-            "💗",
-            "💖",
-            "✨",
-            "♡"
-        ];
-
-        function createHeart() {
-
-            const heart = document.createElement("div");
-
-            heart.classList.add("heart");
-
-            heart.innerHTML =
-                heartSymbols[
-                    Math.floor(
-                        Math.random() * heartSymbols.length
-                    )
-                ];
-
-            heart.style.left =
-                Math.random() * 100 + "%";
-
-            heart.style.fontSize =
-                (Math.random() * 18 + 12) + "px";
-
-            heart.style.animationDuration =
-                (Math.random() * 5 + 5) + "s";
-
-            hearts.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 10000);
-        }
-
-        setInterval(createHeart, 600);
-
-
-        /* =========================
-           POPUP
-        ========================== */
-
-        function showLove() {
-
-            document
-                .getElementById("popup")
-                .classList.add("active");
+            }
 
         }
 
-        function closeLove() {
+    );
 
-            document
-                .getElementById("popup")
-                .classList.remove("active");
+}
 
-        }
+/* ================================
 
+   CEK PIN
 
-        /* =========================
-           CLOSE POPUP KLIK LUAR
-        ========================== */
+================================ */
 
-        document
-            .getElementById("popup")
-            .addEventListener("click", function(event) {
+function cekPin() {
 
-                if (event.target === this) {
-                    closeLove();
-                }
+    const pesan =
 
-            });
+        document.getElementById(
 
-    </script>
+            "pesanPin"
+
+        );
+
+    const card =
+
+        document.getElementById(
+
+            "pinCard"
+
+        );
+
+    /* PIN BENAR */
+
+    if (
+
+        pinSekarang === pinBenar
+
+    ) {
+
+        pesan.style.color =
+
+            "#55a86b";
+
+        pesan.innerText =
+
+            "PIN benar 💗";
+
+        setTimeout(
+
+            function() {
+
+                bukaRating();
+
+            },
+
+            600
+
+        );
+
+    }
+
+    /* PIN SALAH */
+
+    else {
+
+        pesan.style.color =
+
+            "#e34b65";
+
+        pesan.innerText =
+
+            "PIN salah, coba lagi yaa 🥺";
+
+        card.classList.add(
+
+            "shake"
+
+        );
+
+        setTimeout(
+
+            function() {
+
+                card.classList.remove(
+
+                    "shake"
+
+                );
+
+                pinSekarang = "";
+
+                updatePinDisplay();
+
+            },
+
+            500
+
+        );
+
+    }
+
+}
+
+/* ================================
+
+   PIN → RATING
+
+================================ */
+
+function bukaRating() {
+
+    const lama =
+
+        document.getElementById(
+
+            "slidePin"
+
+        );
+
+    const baru =
+
+        document.getElementById(
+
+            "slideRating"
+
+        );
+
+    pindahSlide(
+
+        lama,
+
+        baru
+
+    );
+
+}
+
+/* ================================
+
+   RATING → PESAN
+
+================================ */
+
+function bukaPesan() {
+
+    const lama =
+
+        document.getElementById(
+
+            "slideRating"
+
+        );
+
+    const baru =
+
+        document.getElementById(
+
+            "slidePesan"
+
+        );
+
+    pindahSlide(
+
+        lama,
+
+        baru
+
+    );
+
+}
+
+/* ================================
+
+   PESAN → SELESAI
+
+================================ */
+
+function bukaSelesai() {
+
+    const lama =
+
+        document.getElementById(
+
+            "slidePesan"
+
+        );
+
+    const baru =
+
+        document.getElementById(
+
+            "slideSelesai"
+
+        );
+
+    pindahSlide(
+
+        lama,
+
+        baru
+
+    );
+
+}
+
+/* ================================
+
+   PINDAH SLIDE
+
+================================ */
+
+function pindahSlide(
+
+    lama,
+
+    baru
+
+) {
+
+    /* HALAMAN LAMA KELUAR KE KIRI */
+
+    lama.classList.remove(
+
+        "active"
+
+    );
+
+    lama.classList.add(
+
+        "keluar"
+
+    );
+
+    /* HALAMAN BARU MASUK DARI KANAN */
+
+    baru.classList.add(
+
+        "active"
+
+    );
+
+}
+
+/* ================================
+
+   UPDATE PERSENTASE SLIDER
+
+================================ */
+
+function updateValue(id) {
+
+    const slider =
+
+        document.getElementById(
+
+            id
+
+        );
+
+    const angka =
+
+        document.getElementById(
+
+            id + "Value"
+
+        );
+
+    angka.innerText =
+
+        slider.value + "%";
+
+}
+
+</script>
 
 </body>
+
 </html>
